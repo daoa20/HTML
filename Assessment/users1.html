@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Users</title>
+        <meta name="description" content="APP Web Task 5">
+        <meta name="author" content="SitePoint">
+        <link rel="stylesheet" href="w3.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <style>
+        td{
+            vertical-align: middle;
+        }
+        </style>
+    </head>
+
+    <body class="" >
+    <header class="w3-container w3-yellow " ><h2>APP Single Page App</h2></header>
+    <div class="w3-container">
+            <section id="sectUsers" class="w3-half w3-center" >
+                <div class="">
+                    <h2 >Users</h2>
+                    <div id="divPageNumber">Page <span id="pageNumber">1</span> of <span id="totalPages">2</span></div>
+                    <button id="btnPrevious" class="w3-button w3-round-xlarge w3-border w3-left w3-red w3-hover-black">Previous</button><button id="btnNext" class="w3-hover-black w3-red w3-button w3-round-xlarge w3-border w3-right">Next</button>
+                    <br>
+                    <br>
+                    <table id="tblUsers" class="w3-table w3-striped w3-hoverable w3-centered w3-border" style="height: 1em">
+                        <tbody><tr id="tblUserHeader" class="w3-blue">
+                            <th>User ID</th>
+                            <th>Email</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Avatar</th>
+                        </tr>
+                    <tr  id="user1"><td style="vertical-align: middle">1</td><td style="vertical-align: middle">george.bluth@reqres.in</td><td style="vertical-align: middle">George</td><td style="vertical-align: middle">Bluth</td><td class="w3-card" style="height: 10%"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg" alt="avatar" ></td></tr>
+                    <tr  id="user2"><td style="vertical-align: middle">2</td><td style="vertical-align: middle">janet.weaver@reqres.in</td><td style="vertical-align: middle">Janet</td><td style="vertical-align: middle">Weaver</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg" alt="avatar"></td></tr>
+                    <tr  id="user3"><td style="vertical-align: middle">3</td><td style="vertical-align: middle">emma.wong@reqres.in</td><td style="vertical-align: middle">Emma</td><td style="vertical-align: middle">Wong</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg" alt="avatar"></td></tr>
+                    <tr ><td >4</td><td style="vertical-align: middle">eve.holt@reqres.in</td><td style="vertical-align: middle">Eve</td><td style="vertical-align: middle">Holt</td><td style="vertical-align: middle" style="vertical-align: middle" class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg" alt="avatar"></td></tr>
+                    <tr  id="user5"><td style="vertical-align: middle">5</td><td style="vertical-align: middle">charles.morris@reqres.in</td><td style="vertical-align: middle">Charles</td><td style="vertical-align: middle">Morris</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg" alt="avatar"></td></tr>
+                    <tr  id="user6"><td style="vertical-align: middle">6</td><td style="vertical-align: middle">tracey.ramos@reqres.in</td><td style="vertical-align: middle">Tracey</td><td style="vertical-align: middle">Ramos</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg" alt="avatar"></td></tr></tbody></table>
+                </div>
+            </section>
+            <section id="sectUser" class="w3-third w3-center w3-container">
+                <div class="w3-card ">
+                    <h2 >User</h2>
+                    <div >
+                        <img id="userAvatar" src="https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg" alt="avatar">
+                        <form id="frmUser" class="w3-container w3-margin-top">
+
+                            <input type="text" id="userID" class="w3-input">
+                            <label class="w3-left">User ID</label><br>
+
+                            <input type="text" id="userEmail" class="w3-input">
+                            <label class="w3-left">Email</label><br>
+
+                            <input type="text" id="userFirstName" class="w3-input">
+                            <label class="w3-left">First Name</label><br>
+
+                            <input type="text" id="userLastName" class="w3-input">
+                            <label class="w3-left">Last Name</label>
+                            <div >
+                                <button id="btnSaveUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-red w3-hover-black">Save Changes</button>
+                                    <button id="btnDeleteUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-red w3-hover-black">Delete User</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+            <section id="sectNewUser" class="w3-third w3-center w3-container">
+                <div class="w3-card w3-white">
+                    <h2 >New User</h2>
+                    <div >
+                        <form id="frmNewUser" class="w3-container w3-margin-top">
+
+                            <input type="text" id="userName" class="w3-input">
+                            <label class="w3-left">Username</label><br>
+
+                            <input type="text" id="userJob" class="w3-input">
+                            <label class="w3-left">Job</label><br>
+                            <div >
+                                <button id="btnNewUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-red w3-hover-black">New User</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+    </div>
+    </body>
+</html>

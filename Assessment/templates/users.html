@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Users</title>
+        <meta name="description" content="APP Web Task 5">
+        <meta name="author" content="SitePoint">
+         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+        <script src="script.js"></script>
+        <script type="text/javascript" src="users.json"></script>
+        <style type="text/css">
+            .noshow{
+                visibility: hidden;
+            }
+            .show{
+                visibility: visible;
+                -webkit-animation: fadeIn 1s;
+                animation: fadeIn 1s;
+            }
+            #sectUs {
+              position: fixed;
+              display: none;
+              width: 100%;
+              height: 100%;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-color: rgba(0,0,0,0.5);
+              z-index: 2;
+              cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body class="" style="background-color: #e6e6e6">
+    <header class="w3-container w3-black w3-center" ><h2>APP Single Page App</h2></header>
+    <div class="w3-row w3-container">
+            <section id="sectUsers" class=" w3-center w3-container">
+                <div class="">
+                    <h2 >Users</h2>
+                    <button id="btnNewUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-black w3-text-white" onclick="newUser()" style="display:none;">New User</button>
+                    <button id="showTime" class="w3-button w3-margin w3-round-xlarge w3-border w3-black w3-text-white" onclick="showTime()">Show Users</button>
+                    <div id="divPageNumber" style="display: none;">Page <span id="pageNumber"></span> of <span id="totalPages">2</span></div>
+                    <div id="controls" style="display: none;"><button id="btnPrevious" class="w3-button w3-round-xlarge w3-border w3-left w3-white" onclick="previous()">Previous</button><button id="btnNext" class="w3-button w3-round-xlarge w3-border w3-right w3-white" onclick="next()">Next</button></div>
+                    <br>
+                    <br>
+                    <table id="tblUsers" class="w3-table w3-striped w3-hoverable w3-centered w3-border" style="display: none;">
+                        <tbody id="start"><tr id="tblUserHeader" class="w3-black">
+                            <th>User ID</th>
+                            <th>Email</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Avatar</th>
+                            <th>Actions</th>
+                        </tr>
+                    <!--<tr  id="user1"><td style="vertical-align: middle" id="one"></td><td style="vertical-align: middle">george.bluth@reqres.in</td><td style="vertical-align: middle">George</td><td style="vertical-align: middle">Bluth</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/calebogden/128.jpg" alt="avatar"></td><td style="vertical-align: middle"><button id="btnNext" class="w3-button w3-round-xlarge w3-orange" onclick="edit()">Edit</button></td></tr>
+                    <tr  id="user2"><td style="vertical-align: middle">2</td><td style="vertical-align: middle">janet.weaver@reqres.in</td><td style="vertical-align: middle">Janet</td><td style="vertical-align: middle">Weaver</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg" alt="avatar"></td></tr>
+                    <tr  id="user3"><td style="vertical-align: middle">3</td><td style="vertical-align: middle">emma.wong@reqres.in</td><td style="vertical-align: middle">Emma</td><td style="vertical-align: middle">Wong</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/olegpogodaev/128.jpg" alt="avatar"></td></tr>
+                    <tr id="user4"><td style="vertical-align: middle">4</td><td style="vertical-align: middle">eve.holt@reqres.in</td><td style="vertical-align: middle">Eve</td><td style="vertical-align: middle">Holt</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg" alt="avatar"></td></tr>
+                    <tr  id="user5"><td style="vertical-align: middle">5</td><td style="vertical-align: middle">charles.morris@reqres.in</td><td style="vertical-align: middle">Charles</td><td style="vertical-align: middle">Morris</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg" alt="avatar"></td></tr>
+                    <tr  id="user6"><td style="vertical-align: middle">6</td><td style="vertical-align: middle">tracey.ramos@reqres.in</td><td style="vertical-align: middle">Tracey</td><td style="vertical-align: middle">Ramos</td><td class="w3-card"><img src="https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg" alt="avatar"></td></tr>
+                    -->
+                  </tbody></table>
+                </div>
+            </section>
+            <section id="sectUser" class="w3-third w3-center w3-container w3-display-middle" style="display:none;">
+                <div class="w3-card-4 w3-white">
+                    <h2 calss="w3-text-red">User</h2>
+                    <div >
+                        <img id="userAvatar" alt="avatar">
+                        <form id="frmUser" class="w3-container w3-margin-top" name="ed">
+                            <label class="w3-left">New Email:</label>
+                            <input type="text" id="userEmail" class="w3-input" name="email1"><br>
+                            <label class="w3-left">New First Name:</label>
+                            <input type="text" id="userFirstName" class="w3-input" name="name1"><br>
+                            <label class="w3-left">New Last Name:</label>
+                            <input type="text" id="userLastName" class="w3-input w3-margin-bottom" name="lname1">
+                            <label class="w3-left">New Picture:</label>
+                            <input type="text" id="pic" class="w3-input w3-margin-bottom" name="pic1">
+                        </form>
+                        <div >
+                          <button id="btnNewUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-black w3-text-white" onclick="showTimeNew1()">Back</button>
+                          <button id="btnSaveUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-green">Save Changes</button>
+                          <button id="btnDeleteUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-red">Delete User</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="sectNewUser" class="w3-third w3-center w3-container w3-display-middle" style="display:none;">
+                <div class="w3-card-4 w3-white">
+                    <h2 >New User</h2>
+                    <div class="w3-container">
+                        <form id="frmNewUser" class=" w3-margin-top" name="addd" method="get">
+                            <label class="w3-left">First Name:</label>
+                            <input type="text" id="fName" class="w3-input" name="name"><br>
+                            <label class="w3-left">Last Name:</label>
+                            <input type="text" id="lName" class="w3-input" name="lname"><br>
+                            <label class="w3-left">email:</label>
+                            <input type="email" id="email" class="w3-input" name="email"><br>
+                            <label class="w3-left">Avatar:</label>
+                            <input type="text" id="pic" class="w3-input" name="pic"><br>
+
+                        </form>
+                        <div class="w3-left">
+                        <button id="btnNewUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-black w3-text-white" onclick="showTimeNew()">Back</button>
+                        </div>
+                        <button id="btnNewUser" class="w3-button w3-margin w3-round-xlarge w3-border w3-green w3-text-white w3-right" onclick="weird()">Add User</button>
+                    </div>
+                </div>
+            </section>
+    </div>
+    </body>
+</html>
